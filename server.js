@@ -1,7 +1,9 @@
 const express = require('express')
 
 const path = require('path')
+
 const Rollbar = require('rollbar')
+
 const app = express()
 app.use(express.json())
 
@@ -21,7 +23,7 @@ app.get('/', (req, res) => {
 let students = []
 
 app.post('/api/student', (req, res) => {
-    const {name} = req.body
+    let {name} = req.body
     name = name.trim()
 
     students.push(name)
