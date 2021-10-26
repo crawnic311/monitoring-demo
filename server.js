@@ -17,6 +17,19 @@ app.get('/', (req, res) => {
     rollbar.info('html file served successfully')
 })
 
+let students = []
+
+app.post('/api/student', (req, res) => {
+    const {name} = req.body
+    name = name.trim()
+
+    students.push(name)
+    rollbar.log('Student added successfully', {author: 'Dillon', type: 'Manual Entry'})
+    res.status(200).send(students)
+})
+
+app.use(rollbar.errorHandler())
+
 const port = process.env.PORT ||4094
 
 app.listen(port, () => console.log(`Unity ${port}!`))
