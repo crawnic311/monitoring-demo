@@ -3,6 +3,7 @@ const express = require('express')
 const path = require('path')
 const Rollbar = require('rollbar')
 const app = express()
+app.use(express.json())
 
 let rollbar = new Rollbar({
     accessToken: '59e85d0baada4d618c3753a4a1ca5869',
